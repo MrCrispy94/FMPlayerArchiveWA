@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF--8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FM Player Archive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://esm.sh/react-easy-crop@5.0.7/style.css">
+    <style>
+      html, body, #root {
+        height: 100%;
+        overflow: hidden;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      /* Custom scrollbar for webkit browsers */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #2d3748; /* bg-gray-700 */
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #4a5568; /* bg-gray-600 */
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #718096; /* bg-gray-500 */
+      }
+      
+      @keyframes holographic-anim {
+        0% { transform: rotate(0deg); }
+        25% { transform: rotate(5deg) scale(1.05); }
+        50% { transform: rotate(0deg); }
+        75% { transform: rotate(-5deg) scale(1.05); }
+        100% { transform: rotate(0deg); }
+      }
+
+      @keyframes holographic-glare {
+          0% {
+              transform: translateX(-100%) skewX(-30deg);
+              opacity: 0.1;
+          }
+          100% {
+              transform: translateX(200%) skewX(-30deg);
+              opacity: 0.5;
+          }
+      }
+
+      .holographic-effect {
+        position: relative;
+        background: linear-gradient(135deg, #a0a0a0, #d0d0d0, #a0a0a0);
+        animation: holographic-anim 10s ease infinite;
+        overflow: hidden;
+      }
+
+      .holographic-effect::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        border-radius: 0.75rem; /* 12px */
+        background-image: linear-gradient(
+          110deg,
+          rgba(255, 0, 0, 0.25) 0%,
+          rgba(255, 153, 0, 0.25) 15%,
+          rgba(255, 255, 0, 0.25) 30%,
+          rgba(0, 255, 0, 0.25) 45%,
+          rgba(0, 153, 255, 0.25) 60%,
+          rgba(75, 0, 130, 0.25) 75%,
+          rgba(238, 130, 238, 0.25) 90%,
+          rgba(255, 0, 0, 0.25) 100%
+        );
+        mix-blend-mode: overlay;
+        opacity: 0.6;
+        z-index: 1;
+      }
+
+      .holographic-effect::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 50%;
+          height: 100%;
+          border-radius: 0.75rem; /* 12px */
+          background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 100%);
+          animation: holographic-glare 5s infinite 1s;
+          z-index: 2;
+      }
+      
+      kbd {
+        background-color: #e5e7eb; /* bg-gray-200 */
+        color: #1f2937; /* text-gray-800 */
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        border: 1px solid #d1d5db; /* border-gray-300 */
+        font-family: monospace;
+        font-size: 0.875rem;
+        box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+      }
+
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react-dom": "https://esm.sh/react-dom@^19.1.0",
+    "uuid": "https://esm.sh/uuid@^11.1.0",
+    "html2canvas": "https://esm.sh/html2canvas@^1.4.1",
+    "react-easy-crop": "https://esm.sh/react-easy-crop@^5.0.7"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
